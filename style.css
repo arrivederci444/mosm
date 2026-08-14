@@ -1001,6 +1001,65 @@ i.fa-play-circle, i.fa-pause-circle, i.fa-step-forward, i.fa-step-backward {
   font-weight: 600;
 }
 
+/* ---- fanfic ---- */
+
+.fanfic-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 13px 10px;
+  border-bottom: 1px solid #f0f0f0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .15s;
+}
+
+.fanfic-item:hover {
+  background: #f4faf5;
+}
+
+.fanfic-ch {
+  color: #2e7d32;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  flex-shrink: 0;
+}
+
+.fanfic-title {
+  color: #333;
+  font-size: .98rem;
+  font-weight: 600;
+}
+
+.fanfic-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2e7d32;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0 14px;
+}
+
+.fanfic-chapter-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1f1f1f;
+  text-align: center;
+  padding: 6px 0 14px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 16px;
+}
+
+.fanfic-body p {
+  color: #444;
+  line-height: 2;
+  margin-bottom: 12px;
+  font-size: .95rem;
+}
+
 /* ---- floating vinyl ---- */
 
 .float-vinyl {

@@ -731,12 +731,62 @@ function closeLightbox() {
   lb.classList.remove("open");
 }
 
+/* ---- 同人文 ---- */
+
+function buildFanfic() {
+  let list = document.getElementById("fanfic-list");
+  if (!list) return;
+  list.innerHTML = '<p class="page-lead">长篇小说 · NOVEL</p>';
+  fanfic_chapters.forEach(function (ch, i) {
+    let item = document.createElement("div");
+    item.className = "fanfic-item";
+
+    let chEl = document.createElement("div");
+    chEl.className = "fanfic-ch";
+    chEl.textContent = ch.ch;
+
+    let titleEl = document.createElement("div");
+    titleEl.className = "fanfic-title";
+    titleEl.textContent = ch.title;
+
+    item.appendChild(chEl);
+    item.appendChild(titleEl);
+    item.addEventListener("click", function () {
+      openChapter(i);
+    });
+    list.appendChild(item);
+  });
+}
+
+function openChapter(i) {
+  let ch = fanfic_chapters[i];
+  document.getElementById("fanfic-list").style.display = "none";
+  document.getElementById("fanfic-read").style.display = "block";
+  document.getElementById("fanfic-chapter-title").textContent = ch.ch + " · " + ch.title;
+  let body = document.getElementById("fanfic-body");
+  body.innerHTML = "";
+  ch.paras.forEach(function (p) {
+    let para = document.createElement("p");
+    para.textContent = p;
+    body.appendChild(para);
+  });
+  document.getElementById("view-fanfic").scrollTop = 0;
+}
+
+function closeChapter() {
+  document.getElementById("fanfic-read").style.display = "none";
+  document.getElementById("fanfic-list").style.display = "block";
+  let body = document.getElementById("fanfic-body");
+  body.innerHTML = "";
+}
+
 // Build the playlist, load the first track, open the main menu
 buildPlaylist();
 loadTrack(track_index);
 paintSlider(volume_slider, volume_slider.value);
 buildGallery();
 buildVideos();
+buildFanfic();
 updateAuthUI();
 updateFavUI();
 showView("menu");

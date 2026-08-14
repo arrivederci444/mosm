@@ -102,10 +102,11 @@
     <div class="page">
       <div class="page-head"><div class="page-title">同人文</div></div>
       <div class="page-body">
-        <div class="empty-state">
-          <div class="es-icon"><i class="fa fa-book-open"></i></div>
-          <div class="es-title">文字档案整理中</div>
-          <div class="es-sub">敬请期待</div>
+        <div class="fanfic-list" id="fanfic-list"></div>
+        <div class="fanfic-read" id="fanfic-read" style="display:none">
+          <div class="fanfic-back" onclick="closeChapter()"><i class="fa fa-arrow-left"></i> 返回目录</div>
+          <div class="fanfic-chapter-title" id="fanfic-chapter-title"></div>
+          <div class="fanfic-body" id="fanfic-body"></div>
         </div>
       </div>
       <div class="card-foot">同人文 · 文字区</div>
@@ -241,7 +242,8 @@
     <span class="fv-note">NOW PLAYING</span>
   </div>
 
-  <!-- Load the main script for the player -->
+  <!-- Load the fanfic data, then the main script -->
+  <script src="fanfic.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
