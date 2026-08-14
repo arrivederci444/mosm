@@ -710,6 +710,13 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+document.getElementById("lightbox").addEventListener("wheel", function (e) {
+  if (!this.classList.contains("open")) return;
+  e.preventDefault();
+  if (e.deltaY > 0) nextMedia();
+  else prevMedia();
+}, { passive: false });
+
 function closeLightbox() {
   let lb = document.getElementById("lightbox");
   let video = document.getElementById("lb-video");

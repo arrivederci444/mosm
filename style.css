@@ -931,35 +931,56 @@ i.fa-play-circle, i.fa-pause-circle, i.fa-step-forward, i.fa-step-backward {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.lb-nav {
+.lb-zone {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  font-size: 1.25rem;
+  top: 0;
+  bottom: 0;
+  width: 76px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background .15s, transform .15s;
+  opacity: 0;
+  transition: opacity .2s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
-.lb-nav:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-50%) scale(1.12);
+.lb-zone:hover {
+  opacity: 1;
 }
 
-.lb-prev {
-  left: 16px;
+.lb-zone-left {
+  left: 0;
 }
 
-.lb-next {
-  right: 16px;
+.lb-zone-right {
+  right: 0;
+}
+
+.lb-nav {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s, transform .15s;
+  pointer-events: none;
+}
+
+.lb-zone:hover .lb-nav {
+  background: rgba(0, 0, 0, 0.65);
+  transform: scale(1.08);
+}
+
+/* 触屏设备没有鼠标悬停，直接显示半透明按钮方便点按 */
+@media (hover: none) {
+  .lb-zone {
+    opacity: .55;
+  }
 }
 
 .band-line {
