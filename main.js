@@ -596,6 +596,7 @@ let image_files = [
 
 let video_files = [
   "video/034d00a5aa4e42bb126ba47676878206.mp4",
+  "video/287e52dffd72d55420a1f739efb975df.mp4",
   "video/30c61c79e30c1c6c3e99060fcb01f5e9.mp4",
   "video/3579453c37a60faa2eaa27c8f79db22e.mp4",
   "video/56b183375f85e227aa44e17bee3a2853.mp4",
