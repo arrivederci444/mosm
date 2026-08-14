@@ -931,6 +931,37 @@ i.fa-play-circle, i.fa-pause-circle, i.fa-step-forward, i.fa-step-backward {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
+.lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .15s, transform .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lb-nav:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.12);
+}
+
+.lb-prev {
+  left: 16px;
+}
+
+.lb-next {
+  right: 16px;
+}
+
 .band-line {
   display: flex;
   justify-content: space-between;

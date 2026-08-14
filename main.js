@@ -613,13 +613,13 @@ function buildGallery() {
   let grid = document.querySelector(".img-grid");
   if (!grid) return;
   grid.innerHTML = "";
-  image_files.forEach(function (src) {
+  image_files.forEach(function (src, i) {
     let cell = document.createElement("div");
     cell.className = "img-cell";
     cell.title = "查看大图";
     cell.style.backgroundImage = "url('" + encodeURI(thumbPath(src)) + "')";
     cell.addEventListener("click", function () {
-      openImage(encodeURI(src));
+      openImageAt(i);
     });
     grid.appendChild(cell);
   });
@@ -644,13 +644,18 @@ function buildVideos() {
     item.appendChild(thumb);
     item.appendChild(name);
     item.addEventListener("click", function () {
-      openVideo(encodeURI(src));
+      openVideoAt(i);
     });
     list.appendChild(item);
   });
 }
 
-function openImage(src) {
+let media_mode = "image";
+let media_index = 0;
+
+function openImageAt(index) {
+  media_mode = "image";
+  media_index = index;
   let lb = document.getElementById("lightbox");
   let img = document.getElementById("lb-img");
   let video = document.getElementById("lb-video");
@@ -658,22 +663,52 @@ function openImage(src) {
   video.removeAttribute("src");
   video.load();
   video.style.display = "none";
-  img.src = src;
+  img.src = encodeURI(image_files[index]);
   img.style.display = "block";
   lb.classList.add("open");
 }
 
-function openVideo(src) {
+function openVideoAt(index) {
+  media_mode = "video";
+  media_index = index;
   let lb = document.getElementById("lightbox");
   let img = document.getElementById("lb-img");
   let video = document.getElementById("lb-video");
   img.removeAttribute("src");
   img.style.display = "none";
-  video.src = src;
+  video.src = encodeURI(video_files[index]);
   video.style.display = "block";
   lb.classList.add("open");
   video.play();
 }
+
+function prevMedia() {
+  if (media_mode === "image") {
+    openImageAt((media_index - 1 + image_files.length) % image_files.length);
+  } else {
+    openVideoAt((media_index - 1 + video_files.length) % video_files.length);
+  }
+}
+
+function nextMedia() {
+  if (media_mode === "image") {
+    openImageAt((media_index + 1) % image_files.length);
+  } else {
+    openVideoAt((media_index + 1) % video_files.length);
+  }
+}
+
+document.addEventListener("keydown", function (e) {
+  let lb = document.getElementById("lightbox");
+  if (!lb.classList.contains("open")) return;
+  if (e.key === "Escape") {
+    closeLightbox();
+  } else if (e.key === "ArrowLeft") {
+    prevMedia();
+  } else if (e.key === "ArrowRight") {
+    nextMedia();
+  }
+});
 
 function closeLightbox() {
   let lb = document.getElementById("lightbox");
