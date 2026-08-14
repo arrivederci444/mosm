@@ -85,17 +85,6 @@ body {
   display: none;
 }
 
-.sn-bottom {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-left: auto;
-}
-
-.sn-bottom .sn-item {
-  padding: 8px 10px;
-}
-
 /* ---- auth & profile ---- */
 
 .auth-form {
@@ -1246,15 +1235,6 @@ i.fa-play-circle, i.fa-pause-circle, i.fa-step-forward, i.fa-step-backward {
     overflow-x: visible;
     overflow-y: auto;
     gap: 2px;
-  }
-
-  .sn-bottom {
-    flex-direction: column;
-    align-items: stretch;
-    margin-left: 0;
-    border-top: 1px solid #eee;
-    margin-top: 14px;
-    padding-top: 10px;
   }
 
   .sn-item {
