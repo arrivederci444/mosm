@@ -758,7 +758,10 @@ function buildFanfic() {
   });
 }
 
+let current_chapter = 0;
+
 function openChapter(i) {
+  current_chapter = i;
   let ch = fanfic_chapters[i];
   document.getElementById("fanfic-list").style.display = "none";
   document.getElementById("fanfic-read").style.display = "block";
@@ -770,7 +773,26 @@ function openChapter(i) {
     para.textContent = p;
     body.appendChild(para);
   });
-  document.getElementById("view-fanfic").scrollTop = 0;
+  updateFanficNav();
+  let v = document.getElementById("view-fanfic");
+  v.scrollTop = 0;
+  let pb = v.querySelector(".page-body");
+  if (pb) pb.scrollTop = 0;
+}
+
+function updateFanficNav() {
+  let prev = document.getElementById("fanfic-prev");
+  let next = document.getElementById("fanfic-next");
+  prev.classList.toggle("disabled", current_chapter <= 0);
+  next.classList.toggle("disabled", current_chapter >= fanfic_chapters.length - 1);
+}
+
+function prevChapter() {
+  if (current_chapter > 0) openChapter(current_chapter - 1);
+}
+
+function nextChapter() {
+  if (current_chapter < fanfic_chapters.length - 1) openChapter(current_chapter + 1);
 }
 
 function closeChapter() {

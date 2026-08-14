@@ -1060,6 +1060,43 @@ i.fa-play-circle, i.fa-pause-circle, i.fa-step-forward, i.fa-step-backward {
   font-size: .95rem;
 }
 
+.fanfic-nav {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid #eee;
+}
+
+.fanfic-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 11px 8px;
+  border: 1px solid #c9ecd0;
+  border-radius: 10px;
+  background: #e9f7ec;
+  color: #2e7d32;
+  font-size: .88rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background .15s, transform .15s;
+}
+
+.fanfic-btn:hover {
+  background: #dcefdf;
+  transform: translateY(-1px);
+}
+
+.fanfic-btn.disabled {
+  opacity: .35;
+  cursor: default;
+  transform: none;
+}
+
 /* ---- floating vinyl ---- */
 
 .float-vinyl {
