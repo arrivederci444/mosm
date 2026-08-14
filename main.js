@@ -197,6 +197,10 @@ function buildPlaylist() {
     state.className = "pl-state";
     state.innerHTML = '<i class="fa fa-play"></i>';
 
+    let lock = document.createElement("span");
+    lock.className = "pl-lock";
+    lock.innerHTML = '<i class="fa fa-lock"></i>';
+
     let fav = document.createElement("span");
     fav.className = "pl-fav";
     fav.innerHTML = '<i class="fa fa-heart"></i>';
@@ -208,6 +212,7 @@ function buildPlaylist() {
 
     item.appendChild(num);
     item.appendChild(meta);
+    item.appendChild(lock);
     item.appendChild(fav);
     item.appendChild(state);
 
@@ -545,7 +550,79 @@ let float_vinyl = document.querySelector(".float-vinyl");
 let bg_layer = document.getElementById("bg-layer");
 let desktopMQ = window.matchMedia("(min-width: 1024px)");
 
+/* ---- 曲目锁 ---- */
+
+const LOCK_PASS = "061025";
+const locked_names = ["sunpunk", "嵇康2.0", "陌鸣 废案", "晚安", "坐着睡-01"];
+let unlocked = false;
+let pending_index = -1;
+
+function isLocked(i) {
+  return locked_names.indexOf(track_list[i].name) >= 0;
+}
+
+function updateLockUI() {
+  playlist_items.forEach(function (item, i) {
+    let lock = item.querySelector(".pl-lock");
+    if (!lock) return;
+    if (isLocked(i)) {
+      lock.style.display = "";
+      lock.innerHTML = unlocked ? '<i class="fa fa-unlock"></i>' : '<i class="fa fa-lock"></i>';
+    } else {
+      lock.style.display = "none";
+    }
+  });
+}
+
+function openLockbox() {
+  document.getElementById("lockbox").classList.add("open");
+  document.getElementById("lock-pass").value = "";
+  document.getElementById("lockbox-msg").textContent = "";
+  setTimeout(function () {
+    document.getElementById("lock-pass").focus();
+  }, 50);
+}
+
+function closeLockbox() {
+  document.getElementById("lockbox").classList.remove("open");
+}
+
+function checkLockPass() {
+  let v = document.getElementById("lock-pass").value;
+  let msg = document.getElementById("lockbox-msg");
+  if (v === LOCK_PASS) {
+    unlocked = true;
+    updateLockUI();
+    closeLockbox();
+    let i = pending_index >= 0 ? pending_index : 0;
+    pending_index = -1;
+    track_index = i;
+    loadTrack(track_index);
+    playTrack();
+    if (!desktopMQ.matches) enterPlayer();
+  } else {
+    msg.textContent = "密码错误";
+    document.getElementById("lock-pass").value = "";
+  }
+}
+
+// 找到一个可正常播放的曲目（未解锁时跳过被锁曲目，且不提示）
+function nextPlayableIndex(start) {
+  let n = track_list.length;
+  let i = start;
+  for (let k = 0; k < n; k++) {
+    if (!(isLocked(i) && !unlocked)) return i;
+    i = (i + 1) % n;
+  }
+  return start;
+}
+
 function playFromPlaylist(index) {
+  if (isLocked(index) && !unlocked) {
+    pending_index = index;
+    openLockbox();
+    return;
+  }
   track_index = index;
   loadTrack(track_index);
   playTrack();
@@ -811,6 +888,7 @@ buildVideos();
 buildFanfic();
 updateAuthUI();
 updateFavUI();
+updateLockUI();
 showView("menu");
 
 function playpauseTrack() {
@@ -833,17 +911,13 @@ function pauseTrack() {
 }
 
 function nextTrack() {
-  if (track_index < track_list.length - 1)
-    track_index += 1;
-  else track_index = 0;
+  track_index = nextPlayableIndex((track_index + 1) % track_list.length);
   loadTrack(track_index);
   playTrack();
 }
 
 function prevTrack() {
-  if (track_index > 0)
-    track_index -= 1;
-  else track_index = track_list.length - 1;
+  track_index = nextPlayableIndex((track_index - 1 + track_list.length) % track_list.length);
   loadTrack(track_index);
   playTrack();
 }

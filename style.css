@@ -307,6 +307,72 @@ body {
   color: #e0245e;
 }
 
+.pl-lock {
+  color: #b8a24a;
+  font-size: .82rem;
+  padding: 8px;
+  display: none;
+}
+
+/* ---- lockbox (track password) ---- */
+
+.lockbox {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lockbox.open {
+  display: flex;
+}
+
+.lockbox-card {
+  width: min(88vw, 320px);
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+}
+
+.lockbox-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 4px;
+  border-radius: 50%;
+  background: #f7f2e2;
+  color: #b8a24a;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lockbox-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+.lockbox-sub {
+  font-size: .82rem;
+  color: #888;
+}
+
+.lockbox-msg {
+  font-size: .82rem;
+  color: #c0392b;
+  min-height: 1.2em;
+}
+
 /* ---- views ---- */
 
 .view {

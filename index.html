@@ -142,6 +142,18 @@
     </div>
   </div>
 
+  <!-- 曲目密码弹窗 -->
+  <div class="lockbox" id="lockbox" onclick="closeLockbox()">
+    <div class="lockbox-card" onclick="event.stopPropagation()">
+      <div class="lockbox-icon"><i class="fa fa-lock"></i></div>
+      <div class="lockbox-title">需要密码</div>
+      <div class="lockbox-sub">这首曲目需要输入访问密码</div>
+      <input type="password" class="auth-input" id="lock-pass" placeholder="请输入访问密码" onkeydown="if(event.key==='Enter')checkLockPass()">
+      <button class="auth-btn" onclick="checkLockPass()">确 认</button>
+      <div class="lockbox-msg" id="lockbox-msg"></div>
+    </div>
+  </div>
+
   <!-- 图片/视频 大图播放弹层 -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <div class="lightbox-body" onclick="event.stopPropagation()">
