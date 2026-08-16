@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>启点乐队 · 招新</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="deck" id="deck">
+
+  <!-- 封面 -->
+  <section class="slide slide-cover" id="slide0">
+    <div class="slide-inner cover-inner">
+      <div class="confetti" aria-hidden="true"></div>
+      <span class="sticker sticker-spin">招新啦！</span>
+      <h1 class="cover-title">启点<span>乐队</span></h1>
+      <p class="cover-sub">社团里的乐队 · 等你一起玩</p>
+      <p class="cover-desc">不用很厉害<br>只要你想来</p>
+      <div class="scroll-hint">往下滑<span class="arrow">↓</span></div>
+    </div>
+  </section>
+
+  <!-- 我们是谁 -->
+  <section class="slide" id="slide1">
+    <div class="slide-inner">
+      <p class="kicker">我们是谁？</p>
+      <h2 class="slide-title">启点乐队</h2>
+      <p class="title-note">隶属于文化艺术部</p>
+      <div class="card">
+        <p>我们是社团里的一个队伍，<br>写自己的歌，也唱自己的歌。</p>
+      </div>
+      <ul class="facts">
+        <li><span class="emoji">🎸</span>原创优先，写自己想写的</li>
+        <li><span class="emoji">🏠</span>有自己的排练室</li>
+        <li><span class="emoji">🎤</span>演出机会常有</li>
+      </ul>
+      <button class="about-link" id="aboutLink">📸 关于我们 · 演出照片</button>
+      <p class="tail">朋友不多，但都挺能折腾。</p>
+    </div>
+  </section>
+
+  <!-- 招新岗位 -->
+  <section class="slide" id="slide2">
+    <div class="slide-inner">
+      <p class="kicker">欢迎入队</p>
+      <h2 class="slide-title">来玩点什么</h2>
+      <div class="chips">
+        <span class="chip">🎤 主唱</span>
+        <span class="chip">🎸 吉他</span>
+        <span class="chip">🎼 贝斯</span>
+        <span class="chip">🥁 鼓手</span>
+        <span class="chip">🎹 键盘</span>
+        <span class="chip">✍️ 写词写曲</span>
+        <span class="chip">📷 摄影</span>
+      </div>
+      <div class="card">
+        <p>不需要很厉害，愿意常来就行。<br>没基础也没关系，有人教。</p>
+      </div>
+      <p class="tail">进群后说一声想进启点队，剩下的交给我们。</p>
+    </div>
+  </section>
+
+  <!-- 加入我们 -->
+  <section class="slide" id="slide3">
+    <div class="slide-inner">
+      <p class="kicker">加入我们</p>
+      <h2 class="slide-title">来，扫码进群</h2>
+      <div class="qr-row">
+        <div class="qr">
+          <img src="qr-qq.jpg" alt="QQ群二维码">
+          <span class="qr-label">QQ群</span>
+        </div>
+        <div class="qr">
+          <img src="qr-wechat.jpg" alt="微信群二维码">
+          <span class="qr-label">微信群</span>
+        </div>
+      </div>
+      <div class="card form-card">
+        <h3>或者留个名，我们来找你</h3>
+        <form id="joinForm">
+          <input type="text" name="name" placeholder="怎么称呼你" required>
+          <input type="text" name="position" placeholder="想玩的方向（可选）">
+          <input type="text" name="contact" placeholder="微信 / QQ / 电话" required>
+          <textarea name="intro" rows="2" placeholder="一句话介绍自己"></textarea>
+          <button type="submit" class="btn">交个朋友！</button>
+        </form>
+        <p class="form-hint" id="formHint"></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="dots" id="dots" aria-hidden="true"></div>
+
+<!-- 演出照片弹窗 -->
+<div class="gallery-modal" id="galleryModal">
+  <div class="gallery-box">
+    <div class="gallery-head">
+      <h3>关于我们 · 演出照片</h3>
+      <button class="gallery-close" id="galleryClose">×</button>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</div>
+
+<!-- 大图灯箱 -->
+<div class="lb" id="lb">
+  <button class="lb-close" id="lbClose">×</button>
+  <button class="lb-prev" id="lbPrev">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-next" id="lbNext">›</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

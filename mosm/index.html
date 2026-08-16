@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Music Player</title>
+  <!-- Load FontAwesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+  <!-- Load the custom CSS style file -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="bg-layer"></div>
+
+  <!-- 导航：桌面为侧边栏，手机为顶部条 -->
+  <nav class="sidenav" id="sidenav">
+    <div class="sn-brand">
+      <div class="sn-name">陌鸣</div>
+      <div class="sn-sub">胡国强</div>
+    </div>
+    <div class="sn-items">
+      <div class="sn-item" data-view="menu" onclick="navTo('menu')"><i class="fa fa-home"></i><span>首页</span></div>
+      <div class="sn-item" data-view="playlist" onclick="navTo('playlist')"><i class="fa fa-record-vinyl"></i><span>唱片集</span></div>
+      <div class="sn-item" data-view="fanfic" onclick="navTo('fanfic')"><i class="fa fa-book"></i><span>同人文</span></div>
+      <div class="sn-item" data-view="images" onclick="navTo('images')"><i class="fa fa-image"></i><span>图片</span></div>
+      <div class="sn-item" data-view="video" onclick="navTo('video')"><i class="fa fa-video"></i><span>视频</span></div>
+      <div class="sn-item" data-view="about" onclick="navTo('about')"><i class="fa fa-info"></i><span>简介</span></div>
+      <div class="sn-item" data-view="band" onclick="navTo('band')"><i class="fa fa-music"></i><span>启点乐队</span></div>
+      <div class="sn-item" id="nav-login" data-view="login" onclick="navTo('login')"><i class="fa fa-sign-in-alt"></i><span>登录</span></div>
+      <div class="sn-item" id="nav-profile" data-view="profile" onclick="navTo('profile')"><i class="fa fa-user"></i><span>个人中心</span></div>
+    </div>
+    <div class="sn-foot">MMXXVI</div>
+  </nav>
+
+  <!-- 首页 -->
+  <div class="view" id="view-menu">
+    <div class="page page-home">
+      <div class="home-hero">
+        <div class="home-badge">INDIE · 独立音乐</div>
+        <h1 class="home-title">陌鸣</h1>
+        <p class="home-sub">手作录音 · 胡国强</p>
+      </div>
+      <div class="home-cta" onclick="navTo('playlist')">
+        <div class="cta-icon"><i class="fa fa-record-vinyl"></i></div>
+        <div class="cta-text">
+          <div class="cta-name">进入唱片集</div>
+          <div class="cta-sub">试听全部作品</div>
+        </div>
+        <i class="fa fa-chevron-right cta-go"></i>
+      </div>
+      <p class="home-hint">其他栏目请使用导航</p>
+    </div>
+  </div>
+
+  <!-- 歌单 -->
+  <div class="view" id="view-playlist">
+    <div class="page">
+      <div class="page-head"><div class="page-title">唱片集</div></div>
+      <div class="pl-list"></div>
+      <div class="card-foot"></div>
+    </div>
+  </div>
+
+  <!-- 播放器 -->
+  <div class="view" id="view-player">
+    <div class="player-back" onclick="goBack()" title="返回"><i class="fa fa-arrow-left"></i></div>
+    <div class="player">
+      <div class="player-expand" onclick="toggleExpand()" title="放大">
+        <i class="fa fa-expand"></i>
+      </div>
+      <div class="details">
+        <div class="now-playing">PLAYING x OF y</div>
+        <div class="track-art"></div>
+        <div class="meta">
+          <div class="track-name">Track Name</div>
+          <div class="track-artist">Track Artist</div>
+        </div>
+      </div>
+      <div class="buttons">
+        <div class="prev-track" onclick="prevTrack()"><i class="fa fa-step-backward fa-2x"></i></div>
+        <div class="playpause-track" onclick="playpauseTrack()"><i class="fa fa-play-circle fa-5x"></i></div>
+        <div class="next-track" onclick="nextTrack()"><i class="fa fa-step-forward fa-2x"></i></div>
+      </div>
+      <div class="slider_container">
+        <div class="current-time">00:00</div>
+        <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+        <div class="total-duration">00:00</div>
+      </div>
+      <div class="slider_container">
+        <i class="fa fa-volume-down"></i>
+        <input type="range" min="1" max="100" value="99" class="volume_slider" onchange="setVolume()">
+        <i class="fa fa-volume-up"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- 同人文 -->
+  <div class="view" id="view-fanfic">
+    <div class="page">
+      <div class="page-head"><div class="page-title">同人文</div></div>
+      <div class="page-body">
+        <div class="fanfic-list" id="fanfic-list"></div>
+        <div class="fanfic-read" id="fanfic-read" style="display:none">
+          <div class="fanfic-back" onclick="closeChapter()"><i class="fa fa-arrow-left"></i> 返回目录</div>
+          <div class="fanfic-chapter-title" id="fanfic-chapter-title"></div>
+          <div class="fanfic-body" id="fanfic-body"></div>
+          <div class="fanfic-nav">
+            <button class="fanfic-btn" id="fanfic-prev" onclick="prevChapter()"><i class="fa fa-chevron-left"></i> 上一章</button>
+            <button class="fanfic-btn" onclick="closeChapter()">返回目录</button>
+            <button class="fanfic-btn" id="fanfic-next" onclick="nextChapter()">下一章 <i class="fa fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="card-foot">同人文 · 文字区</div>
+    </div>
+  </div>
+
+  <!-- 图片 -->
+  <div class="view" id="view-images">
+    <div class="page">
+      <div class="page-head"><div class="page-title">图片</div></div>
+      <div class="page-body">
+        <p class="page-lead">相册 · GALLERY</p>
+        <div class="img-grid"></div>
+      </div>
+      <div class="card-foot">图片 · 影像</div>
+    </div>
+  </div>
+
+  <!-- 视频 -->
+  <div class="view" id="view-video">
+    <div class="page">
+      <div class="page-head"><div class="page-title">视频</div></div>
+      <div class="page-body">
+        <p class="page-lead">影像 · VIDEOS</p>
+        <div class="video-list"></div>
+      </div>
+      <div class="card-foot">视频 · 影像</div>
+    </div>
+  </div>
+
+  <!-- 曲目密码弹窗 -->
+  <div class="lockbox" id="lockbox" onclick="closeLockbox()">
+    <div class="lockbox-card" onclick="event.stopPropagation()">
+      <div class="lockbox-icon"><i class="fa fa-lock"></i></div>
+      <div class="lockbox-title">需要密码</div>
+      <div class="lockbox-sub">这首曲目需要输入访问密码</div>
+      <input type="password" class="auth-input" id="lock-pass" placeholder="请输入访问密码" onkeydown="if(event.key==='Enter')checkLockPass()">
+      <button class="auth-btn" onclick="checkLockPass()">确 认</button>
+      <div class="lockbox-msg" id="lockbox-msg"></div>
+    </div>
+  </div>
+
+  <!-- 图片/视频 大图播放弹层 -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-body" onclick="event.stopPropagation()">
+      <img id="lb-img" src="" alt="">
+      <video id="lb-video" controls playsinline preload="metadata"></video>
+      <div class="lightbox-close" onclick="closeLightbox()"><i class="fa fa-times"></i></div>
+    </div>
+    <div class="lb-zone lb-zone-left" onclick="event.stopPropagation(); prevMedia()" title="上一张">
+      <div class="lb-nav"><i class="fa fa-chevron-left"></i></div>
+    </div>
+    <div class="lb-zone lb-zone-right" onclick="event.stopPropagation(); nextMedia()" title="下一张">
+      <div class="lb-nav"><i class="fa fa-chevron-right"></i></div>
+    </div>
+  </div>
+
+  <!-- 简介 -->
+  <div class="view" id="view-about">
+    <div class="page">
+      <div class="page-head"><div class="page-title">简介</div></div>
+      <div class="page-body">
+        <p class="page-lead">ABOUT · 简介</p>
+        <p class="page-para">陌鸣从不同的角度看待这个多面性的复杂社会：当人与外界的距离越来越远，人类越来越难找到灵魂的共振。陌生的我们因对音乐的共鸣而走到一起。</p>
+        <p class="page-para">当然从另一个角度看，就是支莫名其妙的乐队。</p>
+      </div>
+      <div class="card-foot">简介 · ABOUT</div>
+    </div>
+  </div>
+
+  <!-- 启点乐队 -->
+  <div class="view" id="view-band">
+    <div class="page">
+      <div class="page-head"><div class="page-title">启点乐队</div></div>
+      <div class="page-body">
+        <p class="page-lead">BAND · 乐队</p>
+        <div class="band-line"><span class="band-role">主唱 / 吉他</span><span class="band-name">胡国强</span></div>
+        <div class="band-line"><span class="band-role">贝斯</span><span class="band-name">——</span></div>
+        <div class="band-line"><span class="band-role">鼓</span><span class="band-name">——</span></div>
+        <div class="band-line"><span class="band-role">键盘</span><span class="band-name">——</span></div>
+        <p class="page-para" style="margin-top:18px">乐队简介占位文案：介绍乐队的成立、风格与成员，此处可替换。</p>
+      </div>
+      <div class="card-foot">启点乐队 · BAND</div>
+    </div>
+  </div>
+
+  <!-- 登录 -->
+  <div class="view" id="view-login">
+    <div class="page">
+      <div class="page-head"><div class="page-title">登录 · LOGIN</div></div>
+      <div class="page-body">
+        <form class="auth-form" id="login-form" onsubmit="return doLogin(event)">
+          <label class="auth-label" for="login-user">手机号 / 用户名</label>
+          <input class="auth-input" type="text" id="login-user" autocomplete="username" placeholder="手机号或用户名">
+          <label class="auth-label" for="login-pass">密码</label>
+          <input class="auth-input" type="password" id="login-pass" autocomplete="current-password" placeholder="请输入密码">
+          <button type="submit" class="auth-btn">登 录</button>
+        </form>
+        <form class="auth-form" id="reg-form" style="display:none" onsubmit="return doRegister(event)">
+          <label class="auth-label" for="reg-phone">手机号</label>
+          <div class="code-row">
+            <input class="auth-input" type="tel" id="reg-phone" autocomplete="tel" placeholder="请输入手机号">
+            <button type="button" class="auth-btn code-btn" id="send-code-btn" onclick="sendSmsCode()">发送验证码</button>
+          </div>
+          <label class="auth-label" for="reg-code">验证码</label>
+          <input class="auth-input" type="text" id="reg-code" inputmode="numeric" autocomplete="one-time-code" placeholder="请输入验证码">
+          <label class="auth-label" for="reg-pass">密码</label>
+          <input class="auth-input" type="password" id="reg-pass" autocomplete="new-password" placeholder="设置密码">
+          <label class="auth-label" for="reg-pass2">确认密码</label>
+          <input class="auth-input" type="password" id="reg-pass2" autocomplete="new-password" placeholder="再次输入密码">
+          <button type="submit" class="auth-btn">注 册</button>
+        </form>
+        <p class="auth-switch" id="sw-reg"><a href="javascript:;" onclick="showRegister(true)">还没有账号？去注册</a></p>
+        <p class="auth-switch" id="sw-login" style="display:none"><a href="javascript:;" onclick="showRegister(false)">已有账号？去登录</a></p>
+        <div class="auth-msg" id="auth-msg"></div>
+        <p class="auth-tip">演示账号：admin / 123456 · 注册验证码：123456（模拟）</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 个人中心 -->
+  <div class="view" id="view-profile">
+    <div class="page">
+      <div class="page-head"><div class="page-title">个人中心 · PROFILE</div></div>
+      <div class="page-body">
+        <div class="profile-top">
+          <div class="profile-avatar"><i class="fa fa-user"></i></div>
+          <div class="profile-name" id="profile-name">——</div>
+          <div class="profile-sub" id="profile-sub">0 首收藏</div>
+        </div>
+        <div class="profile-section">
+          <div class="profile-sec-title">我的收藏</div>
+          <div class="profile-favs" id="profile-favs"></div>
+        </div>
+      </div>
+      <div class="card-foot">
+        <button class="auth-btn auth-btn-ghost" onclick="doLogout()">退出登录</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 悬浮唱片：随时回到播放器 -->
+  <div class="float-vinyl" onclick="enterPlayer()" title="回到播放器">
+    <div class="fv-disc"></div>
+    <span class="fv-note">NOW PLAYING</span>
+  </div>
+
+  <!-- Load the fanfic data, then the main script -->
+  <script src="fanfic.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
