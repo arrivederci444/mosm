@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>两个站点</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 32px;
+    background: #fff6e9;
+  }
+  h1 { font-size: 22px; color: #2b2320; letter-spacing: 4px; }
+  .links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+  a {
+    display: block;
+    padding: 34px 44px;
+    border: 3px solid #2b2320;
+    border-radius: 24px;
+    box-shadow: 0 7px 0 rgba(43,35,32,.9);
+    text-decoration: none;
+    background: #fff;
+    text-align: center;
+    transition: transform .15s;
+  }
+  a:active { transform: translateY(4px); box-shadow: 0 3px 0 rgba(43,35,32,.9); }
+  a .name { font-size: 26px; font-weight: 900; color: #2b2320; letter-spacing: 3px; }
+  a .desc { margin-top: 8px; font-size: 14px; color: rgba(43,35,32,.6); }
+</style>
+</head>
+<body>
+  <h1>选择站点</h1>
+  <div class="links">
+    <a href="mosm/">
+      <div class="name">陌鸣</div>
+      <div class="desc">音乐播放器 · 同人文阅读</div>
+    </a>
+    <a href="qidian/">
+      <div class="name">启点乐队</div>
+      <div class="desc">招新页 · 竖屏幻灯片</div>
+    </a>
+  </div>
+</body>
+</html>
