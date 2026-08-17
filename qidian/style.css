@@ -613,6 +613,13 @@ body {
   border-radius: 10px;
   display: block;
 }
+.qr-save { display: block; }
+.qr-hint {
+  margin: -10px 0 22px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255,255,255,.55);
+}
 .qr-label {
   display: block;
   margin-top: 8px;
