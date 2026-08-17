@@ -218,7 +218,7 @@ body {
 
 /* ---------- 封面 ---------- */
 .slide-cover {
-  background-image: url("picture/DSC_8650.jpg");
+  background-image: url("picture/DSC_8650_cover.jpg");
   background-size: cover;
   background-position: center;
 }
