@@ -412,8 +412,8 @@ body {
 }
 
 #slide1 .tail {
-  margin: 16px auto 0;
-  text-align: center;
+  margin: 12px 0 0 2px;
+  text-align: left;
   font-size: 11px;
 }
 .facts {
