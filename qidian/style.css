@@ -643,6 +643,36 @@ body {
   border-color: var(--orange);
   background: #fff;
 }
+.form-group { margin: 2px 0; }
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.group-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.group-opt {
+  flex: 1;
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  background: var(--paper);
+  padding: 10px 6px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+  cursor: pointer;
+}
+.group-opt input { accent-color: var(--orange); }
 .btn {
   border: 2.5px solid var(--ink);
   border-radius: 999px;

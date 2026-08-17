@@ -96,16 +96,23 @@
         </div>
         <div class="qr">
           <img src="qr-wechat.jpg" alt="微信群二维码">
-          <span class="qr-label">微信群</span>
+          <span class="qr-label">微信群（推荐）</span>
         </div>
       </div>
       <div class="card form-card">
         <h3>或者留个名，我们来找你</h3>
         <form id="joinForm">
-          <input type="text" name="name" placeholder="怎么称呼你" required>
-          <input type="text" name="position" placeholder="想玩的方向（可选）">
-          <input type="text" name="contact" placeholder="微信 / QQ / 电话" required>
-          <textarea name="intro" rows="2" placeholder="一句话介绍自己"></textarea>
+          <input type="text" name="name" placeholder="名字" required>
+          <input type="text" name="major" placeholder="专业" required>
+          <input type="tel" name="phone" placeholder="手机号" required>
+          <div class="form-group">
+            <label class="form-label">加群了吗？</label>
+            <div class="group-options">
+              <label class="group-opt"><input type="radio" name="group" value="QQ群"> QQ群</label>
+              <label class="group-opt"><input type="radio" name="group" value="微信群"> 微信群</label>
+              <label class="group-opt"><input type="radio" name="group" value="无"> 无</label>
+            </div>
+          </div>
           <button type="submit" class="btn">交个朋友！</button>
         </form>
         <p class="form-hint" id="formHint"></p>
