@@ -316,8 +316,9 @@ body {
 #slide1 { padding-top: 32px; padding-bottom: 32px; }
 #slide1 .kicker { font-size: 12px; padding: 4px 12px; margin-bottom: 10px; }
 #slide1 .slide-title { font-size: 26px; margin-bottom: 4px; letter-spacing: 1px; }
-#slide1 .title-note { font-size: 11px; margin: 0 0 10px 0; text-align: left; }
-.about-inner {
+#slide1 .title-note { font-size: 11px; margin: 0 0 14px 0; text-align: center; }
+.about-head { text-align: center; }
+.about-body {
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -325,6 +326,7 @@ body {
   gap: 18px;
   width: 100%;
   max-width: 540px;
+  margin: 0 auto;
 }
 .about-text {
   flex: 1;
