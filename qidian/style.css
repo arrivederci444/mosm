@@ -703,24 +703,38 @@ body {
 .group-options {
   display: flex;
   gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 .group-opt {
-  flex: 0 0 auto;
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
   border: 2px solid var(--ink);
   border-radius: 12px;
   background: var(--paper);
-  padding: 10px 14px;
+  padding: 11px 6px;
   font-size: 14px;
   font-weight: 800;
   color: var(--ink);
   cursor: pointer;
+  transition: background .15s;
 }
-.group-opt input { accent-color: var(--orange); }
+.group-opt input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.group-opt.checked {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 3px 0 rgba(43,35,32,.85);
+}
+.form-sub {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(43,35,32,.55);
+}
 .btn {
   border: 2.5px solid var(--ink);
   border-radius: 999px;

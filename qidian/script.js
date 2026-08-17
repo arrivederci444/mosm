@@ -50,6 +50,15 @@
   var form = document.getElementById("joinForm");
   var hint = document.getElementById("formHint");
   if (form) {
+    form.querySelectorAll('input[name="group"]').forEach(function (r) {
+      r.addEventListener("change", function () {
+        form.querySelectorAll(".group-opt").forEach(function (o) {
+          o.classList.remove("checked");
+        });
+        var lab = r.closest(".group-opt");
+        if (lab) lab.classList.add("checked");
+      });
+    });
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var name = form.querySelector('[name="name"]').value.trim();
