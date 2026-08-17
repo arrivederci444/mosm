@@ -454,7 +454,21 @@ body {
 .facts li:nth-child(4) { transform: rotate(0.8deg); }
 .facts .emoji { font-size: 22px; }
 
-/* ---------- 岗位 chips ---------- */
+#slide2 .click-hint {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,.75);
+  margin-top: 6px;
+}
+#slide2 .click-arrow {
+  display: inline-block;
+  font-size: 18px;
+  color: var(--orange);
+  animation: drop 1.4s ease-in-out infinite;
+  margin-left: 2px;
+}
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -462,6 +476,8 @@ body {
   gap: 12px;
   margin: 6px 0 24px;
 }
+
+/* ---------- 岗位 chips ---------- */
 .chip {
   font-size: 16px;
   font-weight: 900;
