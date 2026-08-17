@@ -473,68 +473,51 @@ body {
 .chip:nth-child(8) { background: #ffe4c8; }
 
 .role-hint {
-  margin: -12px 0 22px;
+  margin: -12px 0 0;
   font-size: 12px;
   font-weight: 700;
   color: rgba(255,255,255,.55);
 }
 
-/* 职位考核标准弹窗 */
-.role-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 320;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: rgba(15,12,20,.92);
-  padding: 24px;
-}
-.role-modal.open { display: flex; }
-.role-box {
-  background: #241d18;
-  border: 2.5px solid var(--ink);
-  border-radius: 20px;
-  width: 100%;
-  max-width: 400px;
-  max-height: 82vh;
-  display: flex;
-  flex-direction: column;
+/* 职位信息展开面板 */
+.role-panel {
+  max-height: 0;
   overflow: hidden;
+  transition: max-height .5s ease;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
 }
-.role-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 18px;
-  border-bottom: 2px solid var(--ink);
-  background: #2c241e;
+.role-panel.open { max-height: 520px; }
+.role-panel-inner {
+  background: var(--card);
+  border: 2.5px solid var(--ink);
+  border-radius: 18px;
+  box-shadow: 0 6px 0 rgba(43,35,32,.9);
+  padding: 16px;
+  margin-top: 16px;
+  text-align: left;
+  transform: rotate(-0.5deg);
 }
-.role-head h3 { color: #fff; font-size: 16px; letter-spacing: 2px; }
-.role-close {
-  background: none;
-  border: 0;
-  color: #fff;
-  font-size: 26px;
-  line-height: 1;
-  cursor: pointer;
-}
-.role-body {
-  padding: 18px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.role-panel-title {
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  color: var(--ink);
 }
 .role-point {
-  background: var(--card);
-  border: 2px solid var(--ink);
-  border-radius: 14px;
-  padding: 12px 14px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--ink);
-  box-shadow: 0 3px 0 rgba(0,0,0,.35);
+  margin: 8px 0;
+  padding-left: 16px;
+  position: relative;
+}
+.role-point::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--orange);
 }
 
 /* ---------- 加入我们 ---------- */

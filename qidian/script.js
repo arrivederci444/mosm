@@ -144,7 +144,7 @@
       if (e.key === "ArrowRight") document.getElementById("lbNext").click();
     });
   }
-  /* ---------- 职位考核标准弹窗 ---------- */
+  /* ---------- 职位信息展开 ---------- */
   // 在这里填写每个职位的考核标准，保存后刷新即可生效
   var roleInfo = {
     "主唱": {
@@ -182,6 +182,13 @@
         "2. 考核标准待补充"
       ]
     },
+    "其他乐器": {
+      title: "🎷 其他乐器",
+      points: [
+        "1. 考核标准待补充",
+        "2. 考核标准待补充"
+      ]
+    },
     "写词写曲": {
       title: "✍️ 写词写曲",
       points: [
@@ -195,51 +202,41 @@
         "1. 考核标准待补充",
         "2. 考核标准待补充"
       ]
-    },
-    "其他乐器": {
-      title: "🎷 其他乐器",
-      points: [
-        "1. 考核标准待补充",
-        "2. 考核标准待补充"
-      ]
     }
   };
 
-  var roleModal = document.getElementById("roleModal");
-  var roleTitle = document.getElementById("roleTitle");
-  var roleBody = document.getElementById("roleBody");
+  var rolePanel = document.getElementById("rolePanel");
+  var rolePanelInner = document.getElementById("rolePanelInner");
+  var openRole = null;
 
-  function showRole(key) {
+  function renderRole(key) {
     var info = roleInfo[key];
-    if (!info || !roleModal) return;
-    roleTitle.textContent = info.title;
-    roleBody.innerHTML = "";
+    if (!info || !rolePanelInner) return;
+    rolePanelInner.innerHTML = "";
+    var h = document.createElement("p");
+    h.className = "role-panel-title";
+    h.textContent = info.title;
+    rolePanelInner.appendChild(h);
     info.points.forEach(function (pt) {
       var p = document.createElement("p");
       p.className = "role-point";
       p.textContent = pt;
-      roleBody.appendChild(p);
+      rolePanelInner.appendChild(p);
     });
-    roleModal.classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
-  function hideRole() {
-    if (roleModal) {
-      roleModal.classList.remove("open");
-      document.body.style.overflow = "";
-    }
+    rolePanel.classList.add("open");
+    openRole = key;
   }
 
   var chips = document.querySelectorAll(".chip[data-role]");
   chips.forEach(function (c) {
     c.addEventListener("click", function () {
-      showRole(c.getAttribute("data-role"));
+      var key = c.getAttribute("data-role");
+      if (openRole === key) {
+        rolePanel.classList.remove("open");
+        openRole = null;
+      } else {
+        renderRole(key);
+      }
     });
   });
-  if (roleModal) {
-    document.getElementById("roleClose").addEventListener("click", hideRole);
-    roleModal.addEventListener("click", function (e) {
-      if (e.target === roleModal) hideRole();
-    });
-  }
 })();
