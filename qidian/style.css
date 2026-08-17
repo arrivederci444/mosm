@@ -316,13 +316,20 @@ body {
 #slide1 { padding-top: 24px; padding-bottom: 24px; }
 #slide1 .kicker { font-size: 12px; padding: 4px 12px; margin-bottom: 8px; }
 #slide1 .slide-title { font-size: 24px; margin-bottom: 4px; letter-spacing: 1px; }
-#slide1 .title-note { font-size: 11px; margin: 0 0 14px 0; text-align: center; }
-.about-head { text-align: center; }
+#slide1 .title-note { font-size: 11px; margin: 4px 0 0 0; text-align: left; }
+.about-head {
+  grid-area: head;
+  justify-self: start;
+  text-align: left;
+  transform: rotate(-1.5deg);
+  margin-left: 4px;
+}
 
 .about-body {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   grid-template-areas:
+    "head head"
     "desc p1"
     "p2   facts";
   gap: 16px 14px;
