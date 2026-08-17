@@ -21,7 +21,7 @@
         }
       }
     });
-  }, { threshold: 0.6 });
+  }, { threshold: 0.2 });
 
   slides.forEach(function (s) { io.observe(s); });
 
