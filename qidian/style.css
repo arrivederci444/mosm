@@ -400,6 +400,20 @@ body {
   margin-top: 10px;
   font-size: 12px;
 }
+
+/* 手机版：收紧字距与框内上下间距 */
+@media (max-width: 767px) {
+  .about-desc {
+    padding: 10px 12px;
+  }
+  .about-desc p {
+    line-height: 1.6;
+  }
+  #slide1 .facts li {
+    padding: 8px 10px;
+    line-height: 1.6;
+  }
+}
 .facts {
   list-style: none;
   margin-top: 26px;
