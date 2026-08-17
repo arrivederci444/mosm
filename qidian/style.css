@@ -403,13 +403,20 @@ body {
   border: 0;
   box-shadow: none;
   color: var(--ink);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: 0;
   padding: 0;
   text-align: left;
   cursor: pointer;
   font-family: inherit;
+}
+#slide1 .facts li.facts-cta .about-link-hint {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--orange);
 }
 
 #slide1 .tail {
@@ -465,6 +472,28 @@ body {
   color: var(--ink);
 }
 .chip:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(43,35,32,.85); }
+
+/* 第三页职位：加箭头，看起来更像可点击 */
+#slide2 .chip {
+  position: relative;
+  padding-right: 34px;
+  border-color: rgba(43,35,32,.85);
+}
+#slide2 .chip::after {
+  content: "›";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--ink);
+  opacity: .5;
+}
+#slide2 .chip:hover {
+  box-shadow: 0 6px 0 rgba(43,35,32,.85);
+  transform: translateY(-1px);
+}
 .chip:nth-child(1) { background: #ffe1d3; }
 .chip:nth-child(2) { background: #d8ecff; }
 .chip:nth-child(3) { background: #d9f7e8; }
