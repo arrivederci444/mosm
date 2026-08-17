@@ -312,26 +312,28 @@ body {
 .confetti::after { bottom: 14%; right: -8%; animation-delay: 3s; }
 @keyframes floaty { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-24px) rotate(8deg); } }
 
-/* ---------- 我们是谁（不规则拼贴） ---------- */
+/* ---------- 我们是谁（网格拼贴） ---------- */
 #slide1 { padding-top: 24px; padding-bottom: 24px; }
 #slide1 .kicker { font-size: 12px; padding: 4px 12px; margin-bottom: 8px; }
 #slide1 .slide-title { font-size: 24px; margin-bottom: 4px; letter-spacing: 1px; }
-#slide1 .title-note { font-size: 11px; margin: 0 0 12px 0; text-align: center; }
+#slide1 .title-note { font-size: 11px; margin: 0 0 14px 0; text-align: center; }
 .about-head { text-align: center; }
 
 .about-body {
-  position: relative;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  grid-template-areas:
+    "desc p1"
+    "p2   facts";
+  gap: 16px 14px;
+  align-items: start;
   width: 100%;
-  max-width: 560px;
+  max-width: 540px;
   margin: 0 auto;
-  height: min(58svh, 540px);
 }
 
 .about-desc {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 47%;
+  grid-area: desc;
   background: rgba(255,255,255,.85);
   border: 2.5px solid var(--ink);
   border-radius: 16px;
@@ -340,14 +342,13 @@ body {
   font-size: 12.5px;
   font-weight: 700;
   text-align: left;
-  transform: rotate(-1.5deg);
-  z-index: 1;
+  transform: rotate(-1deg);
 }
 .about-desc p { color: var(--ink); line-height: 1.9; }
 
-.about-photo { position: absolute; margin: 0; }
-.about-photo.p1 { right: 0; top: 0; width: 44%; transform: rotate(2.5deg); z-index: 2; }
-.about-photo.p2 { left: 0; bottom: 0; width: 42%; transform: rotate(-2.5deg); z-index: 2; }
+.about-photo { margin: 0; }
+.about-photo.p1 { grid-area: p1; transform: rotate(2deg); margin-top: 8px; }
+.about-photo.p2 { grid-area: p2; transform: rotate(-2deg); margin-top: -6px; }
 .about-photo img {
   width: 100%;
   display: block;
@@ -363,17 +364,14 @@ body {
 }
 
 #slide1 .facts {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 48%;
+  grid-area: facts;
   display: flex;
   flex-direction: column;
   gap: 6px;
   list-style: none;
   text-align: left;
-  transform: rotate(1.5deg);
-  z-index: 1;
+  margin-top: 0;
+  transform: rotate(1deg);
 }
 #slide1 .facts li {
   padding: 11px 12px;
@@ -405,10 +403,6 @@ body {
   margin-top: 4px;
   font-size: 11px;
   color: rgba(43,35,32,.55);
-}
-
-@media (min-width: 768px) {
-  .about-body { height: min(70svh, 560px); }
 }
 
 /* 手机版：收紧字距与框内上下间距 */
