@@ -42,20 +42,57 @@
   // 首屏直接显示
   activate(0);
 
-  /* ---------- 报名表单 ---------- */
+  /* ---------- 报名表单（提交到 Supabase） ---------- */
+  // ⬇️ 在这里填入你的 Supabase 项目地址和 anon 公钥
+  var SUPABASE_URL = "https://你的项目.supabase.co";
+  var SUPABASE_KEY = "你的anon公钥";
+
   var form = document.getElementById("joinForm");
   var hint = document.getElementById("formHint");
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var data = new FormData(form);
-      var line = [];
-      data.forEach(function (v, k) {
-        if (v) line.push(k + ": " + v);
+      var name = form.querySelector('[name="name"]').value.trim();
+      var major = form.querySelector('[name="major"]').value.trim();
+      var phone = form.querySelector('[name="phone"]').value.trim();
+      var grp = form.querySelector('input[name="group"]:checked');
+      var group = grp ? grp.value : "无";
+
+      if (hint) {
+        hint.textContent = "提交中…";
+        hint.style.color = "var(--yellow)";
+      }
+
+      fetch(SUPABASE_URL + "/rest/v1/signups", {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + SUPABASE_KEY,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify({ name: name, major: major, phone: phone, group: group })
+      })
+      .then(function (res) {
+        if (res.ok) {
+          if (hint) {
+            hint.textContent = "收到！我们会来找你玩的～";
+            hint.style.color = "var(--green)";
+          }
+          form.reset();
+        } else {
+          throw new Error("HTTP " + res.status);
+        }
+      })
+      .catch(function () {
+        if (hint) {
+          hint.textContent = "提交失败，麻烦直接进群或私聊我们～";
+          hint.style.color = "var(--pink)";
+        }
+      })
+      .then(function () {
+        setTimeout(function () { if (hint) hint.textContent = ""; }, 6000);
       });
-      if (hint) hint.textContent = "收到！我们会来找你玩的～";
-      form.reset();
-      setTimeout(function () { if (hint) hint.textContent = ""; }, 6000);
     });
   }
 
