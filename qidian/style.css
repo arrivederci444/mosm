@@ -312,58 +312,62 @@ body {
 .confetti::after { bottom: 14%; right: -8%; animation-delay: 3s; }
 @keyframes floaty { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-24px) rotate(8deg); } }
 
-/* ---------- 我们是谁（网格拼贴） ---------- */
-#slide1 { padding-top: 24px; padding-bottom: 24px; }
-#slide1 .kicker { font-size: 12px; padding: 4px 12px; margin-bottom: 8px; }
-#slide1 .slide-title { font-size: 24px; margin-bottom: 4px; letter-spacing: 1px; }
-#slide1 .title-note { font-size: 11px; margin: 4px 0 0 0; text-align: left; }
-.about-head {
-  grid-area: head;
-  justify-self: start;
-  text-align: left;
-  transform: rotate(-1.5deg);
-  margin-left: 4px;
-}
+/* ---------- 我们是谁（左文右图，适配手机） ---------- */
+#slide1 { padding-top: 20px; padding-bottom: 20px; }
+#slide1 .kicker { font-size: 11px; padding: 4px 12px; margin-bottom: 6px; }
+#slide1 .slide-title { font-size: 22px; margin-bottom: 2px; letter-spacing: 1px; }
+#slide1 .title-note { font-size: 10.5px; margin: 2px 0 0 0; text-align: center; }
+.about-head { text-align: center; margin-bottom: 14px; }
 
 .about-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    "head p1"
-    "desc p2"
-    "facts facts";
-  gap: 20px 16px;
-  align-items: start;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: 16px;
   width: 100%;
-  max-width: 540px;
+  max-width: 520px;
   margin: 0 auto;
 }
 
+.about-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .about-desc {
-  grid-area: desc;
   background: rgba(255,255,255,.85);
   border: 2.5px solid var(--ink);
-  border-radius: 16px;
+  border-radius: 14px;
   box-shadow: 0 5px 0 rgba(43,35,32,.9);
-  padding: 16px 14px;
-  font-size: 12.5px;
+  padding: 12px 12px;
+  font-size: 11px;
   font-weight: 700;
   text-align: left;
   transform: rotate(-0.5deg);
-  margin-top: 8px;
 }
-.about-desc p { color: var(--ink); line-height: 1.9; }
+.about-desc p { color: var(--ink); line-height: 1.75; }
 
-.about-photo { margin: 0; }
-.about-photo.p1 { grid-area: p1; transform: rotate(2deg); margin-top: 6px; }
-.about-photo.p2 { grid-area: p2; transform: rotate(-2deg); margin-top: 10px; }
+.about-photos {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.about-photo { margin: 0; width: 100%; }
+.about-photo.p1 { transform: rotate(1.5deg); }
+.about-photo.p2 { transform: rotate(-1.5deg); }
 .about-photo img {
   width: 100%;
   display: block;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   border: 2.5px solid var(--ink);
-  border-radius: 16px;
+  border-radius: 14px;
   box-shadow: 0 5px 0 rgba(43,35,32,.9);
 }
 .about-photo.p1 img {
@@ -372,25 +376,24 @@ body {
 }
 
 #slide1 .facts {
-  grid-area: facts;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   list-style: none;
   text-align: left;
   margin-top: 0;
   transform: rotate(0.5deg);
 }
 #slide1 .facts li {
-  padding: 11px 12px;
-  font-size: 12px;
+  padding: 9px 11px;
+  font-size: 11px;
   gap: 8px;
-  border-radius: 12px;
-  line-height: 1.8;
+  border-radius: 11px;
+  line-height: 1.7;
 }
-#slide1 .facts .emoji { font-size: 16px; }
+#slide1 .facts .emoji { font-size: 14px; }
 #slide1 .facts li.facts-cta {
-  padding: 10px 12px;
+  padding: 9px 11px;
 }
 #slide1 .facts li.facts-cta .about-link {
   display: block;
@@ -399,7 +402,7 @@ body {
   border: 0;
   box-shadow: none;
   color: var(--ink);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 900;
   letter-spacing: 0;
   padding: 0;
@@ -409,30 +412,9 @@ body {
 }
 
 #slide1 .tail {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 14px;
-  margin: 0;
+  margin: 16px auto 0;
   text-align: center;
-  font-size: 12px;
-}
-
-/* 手机版：更宽松的间距 */
-@media (max-width: 767px) {
-  .about-body {
-    gap: 24px 16px;
-  }
-  .about-desc {
-    padding: 12px 14px;
-  }
-  .about-desc p {
-    line-height: 1.75;
-  }
-  #slide1 .facts li {
-    padding: 10px 12px;
-    line-height: 1.7;
-  }
+  font-size: 11px;
 }
 .facts {
   list-style: none;
