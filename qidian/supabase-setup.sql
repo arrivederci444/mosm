@@ -7,6 +7,8 @@ create table public.signups (
   student_id text not null,
   major text not null,
   phone text not null,
+  position text not null,
+  instruments text not null,
   "group" text not null default '无',
   created_at timestamptz default now()
 );

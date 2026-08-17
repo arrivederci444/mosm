@@ -106,6 +106,17 @@
           <input type="text" name="student_id" placeholder="学号（202XXXXX0XXX）" pattern="202[0-9]{5}0[0-9]{3}" title="学号格式：202XXXXX0XXX" required>
           <input type="text" name="major" placeholder="专业" required>
           <input type="tel" name="phone" placeholder="手机号" required>
+          <select name="position" required>
+            <option value="" disabled selected>想玩的职位</option>
+            <option>主唱</option>
+            <option>吉他</option>
+            <option>贝斯</option>
+            <option>鼓手</option>
+            <option>键盘</option>
+            <option>其他乐器</option>
+            <option>摄影</option>
+          </select>
+          <input type="text" name="instruments" placeholder="会的乐器（会什么+基础多少，零基础写"零基础"）" required>
           <div class="form-group">
             <label class="form-label">加群了吗？（如果都加了写微信群）</label>
             <div class="group-options">

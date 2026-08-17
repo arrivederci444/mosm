@@ -56,6 +56,8 @@
       var studentId = form.querySelector('[name="student_id"]').value.trim();
       var major = form.querySelector('[name="major"]').value.trim();
       var phone = form.querySelector('[name="phone"]').value.trim();
+      var position = form.querySelector('[name="position"]').value;
+      var instruments = form.querySelector('[name="instruments"]').value.trim();
       var grp = form.querySelector('input[name="group"]:checked');
       var group = grp ? grp.value : "";
 
@@ -68,6 +70,8 @@
       }
 
       if (!name || !major || !phone) return fail("姓名、专业、手机号都要填哦～");
+      if (!position) return fail("选一下想玩的职位");
+      if (!instruments) return fail("写一下会的乐器（零基础就写"零基础"）");
       if (!group) return fail("选一下加群了吗？");
       if (!/^202\d{5}0\d{3}$/.test(studentId)) return fail("学号格式不对，应为 202XXXXX0XXX");
 
@@ -89,6 +93,8 @@
           student_id: studentId,
           major: major,
           phone: phone,
+          position: position,
+          instruments: instruments,
           group: group
         })
       })
