@@ -10,6 +10,7 @@ create table public.signups (
   position text not null,
   instruments text not null,
   "group" text not null default '无',
+  remarks text default '',
   created_at timestamptz default now()
 );
 

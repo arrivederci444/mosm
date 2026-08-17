@@ -58,6 +58,7 @@
       var phone = form.querySelector('[name="phone"]').value.trim();
       var position = form.querySelector('[name="position"]').value;
       var instruments = form.querySelector('[name="instruments"]').value.trim();
+      var remarks = form.querySelector('[name="remarks"]').value.trim();
       var grp = form.querySelector('input[name="group"]:checked');
       var group = grp ? grp.value : "";
 
@@ -95,7 +96,8 @@
           phone: phone,
           position: position,
           instruments: instruments,
-          group: group
+          group: group,
+          remarks: remarks
         })
       })
       .then(function (res) {
