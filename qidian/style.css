@@ -313,17 +313,17 @@ body {
 @keyframes floaty { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-24px) rotate(8deg); } }
 
 /* ---------- 我们是谁 ---------- */
-#slide1 { padding-top: 32px; padding-bottom: 32px; }
-#slide1 .kicker { font-size: 12px; padding: 4px 12px; margin-bottom: 10px; }
-#slide1 .slide-title { font-size: 26px; margin-bottom: 4px; letter-spacing: 1px; }
-#slide1 .title-note { font-size: 11px; margin: 0 0 14px 0; text-align: center; }
+#slide1 { padding-top: 24px; padding-bottom: 24px; }
+#slide1 .kicker { font-size: 12px; padding: 4px 12px; margin-bottom: 8px; }
+#slide1 .slide-title { font-size: 24px; margin-bottom: 4px; letter-spacing: 1px; }
+#slide1 .title-note { font-size: 11px; margin: 0 0 10px 0; text-align: center; }
 .about-head { text-align: center; }
 .about-body {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: center;
-  gap: 18px;
+  gap: 14px;
   width: 100%;
   max-width: 540px;
   margin: 0 auto;
@@ -334,26 +334,26 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
+  gap: 10px;
 }
 .about-desc {
   width: 100%;
   background: rgba(255,255,255,.85);
   border: 2.5px solid var(--ink);
-  border-radius: 20px;
+  border-radius: 16px;
   box-shadow: 0 5px 0 rgba(43,35,32,.9);
-  padding: 30px 16px;
-  font-size: 13px;
+  padding: 16px 14px;
+  font-size: 12.5px;
   font-weight: 700;
   text-align: left;
 }
-.about-desc p { color: var(--ink); line-height: 2.3; }
+.about-desc p { color: var(--ink); line-height: 1.9; }
 .about-photos {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
 }
 .about-photo { margin: 0; width: 100%; }
@@ -374,15 +374,15 @@ body {
 }
 #slide1 .facts {
   margin-top: auto;
-  gap: 8px;
+  gap: 6px;
   width: 100%;
 }
 #slide1 .facts li {
-  padding: 16px 12px;
+  padding: 11px 12px;
   font-size: 12px;
   gap: 8px;
-  border-radius: 14px;
-  line-height: 2;
+  border-radius: 12px;
+  line-height: 1.8;
 }
 #slide1 .facts .emoji { font-size: 16px; }
 #slide1 .about-link {
