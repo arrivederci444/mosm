@@ -329,10 +329,10 @@ body {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   grid-template-areas:
-    "head head"
-    "desc p1"
+    "head p1"
+    "desc facts"
     "p2   facts";
-  gap: 16px 14px;
+  gap: 20px 18px;
   align-items: start;
   width: 100%;
   max-width: 540px;
@@ -406,23 +406,31 @@ body {
   cursor: pointer;
   font-family: inherit;
 }
-#slide1 .facts li.facts-cta .tail {
-  margin-top: 4px;
-  font-size: 11px;
-  color: rgba(43,35,32,.55);
+
+#slide1 .tail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  margin: 0;
+  text-align: center;
+  font-size: 12px;
 }
 
-/* 手机版：收紧字距与框内上下间距 */
+/* 手机版：更宽松的间距 */
 @media (max-width: 767px) {
+  .about-body {
+    gap: 24px 16px;
+  }
   .about-desc {
-    padding: 10px 12px;
+    padding: 12px 14px;
   }
   .about-desc p {
-    line-height: 1.6;
+    line-height: 1.75;
   }
   #slide1 .facts li {
-    padding: 8px 10px;
-    line-height: 1.6;
+    padding: 10px 12px;
+    line-height: 1.7;
   }
 }
 .facts {
