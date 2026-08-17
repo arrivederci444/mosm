@@ -16,7 +16,11 @@ html { scroll-snap-type: y proximity; background: #383028; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  background: #383028;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255,122,61,.13), transparent 42%),
+    radial-gradient(circle at 82% 72%, rgba(141,111,255,.11), transparent 42%),
+    radial-gradient(circle at 62% 94%, rgba(255,210,63,.08), transparent 45%),
+    linear-gradient(160deg, #3d332b 0%, #383028 45%, #2c241d 100%);
   color: var(--ink);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
