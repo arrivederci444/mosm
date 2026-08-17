@@ -68,14 +68,16 @@
       <p class="kicker">欢迎入队</p>
       <h2 class="slide-title">来玩点什么</h2>
       <div class="chips">
-        <span class="chip">🎤 主唱</span>
-        <span class="chip">🎸 吉他</span>
-        <span class="chip">🎼 贝斯</span>
-        <span class="chip">🥁 鼓手</span>
-        <span class="chip">🎹 键盘</span>
-        <span class="chip">✍️ 写词写曲</span>
-        <span class="chip">📷 摄影</span>
+        <span class="chip" data-role="主唱">🎤 主唱</span>
+        <span class="chip" data-role="吉他">🎸 吉他</span>
+        <span class="chip" data-role="贝斯">🎼 贝斯</span>
+        <span class="chip" data-role="鼓手">🥁 鼓手</span>
+        <span class="chip" data-role="键盘">🎹 键盘</span>
+        <span class="chip" data-role="写词写曲">✍️ 写词写曲</span>
+        <span class="chip" data-role="摄影">📷 摄影</span>
+        <span class="chip" data-role="其他乐器">🎷 其他乐器</span>
       </div>
+      <p class="role-hint">👇 点一下职位，看看我们的考核标准</p>
       <div class="card">
         <p>不需要很厉害，愿意常来就行。<br>没基础也没关系，有人教。</p>
       </div>
@@ -124,6 +126,17 @@
       <button class="gallery-close" id="galleryClose">×</button>
     </div>
     <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</div>
+
+<!-- 职位考核标准弹窗 -->
+<div class="role-modal" id="roleModal">
+  <div class="role-box">
+    <div class="role-head">
+      <h3 id="roleTitle">职位</h3>
+      <button class="role-close" id="roleClose">×</button>
+    </div>
+    <div class="role-body" id="roleBody"></div>
   </div>
 </div>
 

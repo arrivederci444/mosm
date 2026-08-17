@@ -459,7 +459,10 @@ body {
   border-radius: 999px;
   padding: 10px 20px;
   box-shadow: 0 4px 0 rgba(43,35,32,.85);
+  cursor: pointer;
+  transition: transform .12s;
 }
+.chip:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(43,35,32,.85); }
 .chip:nth-child(1) { background: #ffe1d3; }
 .chip:nth-child(2) { background: #d8ecff; }
 .chip:nth-child(3) { background: #d9f7e8; }
@@ -467,6 +470,72 @@ body {
 .chip:nth-child(5) { background: #e9e0ff; }
 .chip:nth-child(6) { background: #fff3c4; }
 .chip:nth-child(7) { background: #d6ecff; }
+.chip:nth-child(8) { background: #ffe4c8; }
+
+.role-hint {
+  margin: -12px 0 22px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255,255,255,.55);
+}
+
+/* 职位考核标准弹窗 */
+.role-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 320;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15,12,20,.92);
+  padding: 24px;
+}
+.role-modal.open { display: flex; }
+.role-box {
+  background: #241d18;
+  border: 2.5px solid var(--ink);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  max-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.role-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 2px solid var(--ink);
+  background: #2c241e;
+}
+.role-head h3 { color: #fff; font-size: 16px; letter-spacing: 2px; }
+.role-close {
+  background: none;
+  border: 0;
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+.role-body {
+  padding: 18px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.role-point {
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  box-shadow: 0 3px 0 rgba(0,0,0,.35);
+}
 
 /* ---------- 加入我们 ---------- */
 .qr-row {

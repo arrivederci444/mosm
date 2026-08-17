@@ -144,4 +144,102 @@
       if (e.key === "ArrowRight") document.getElementById("lbNext").click();
     });
   }
+  /* ---------- 职位考核标准弹窗 ---------- */
+  // 在这里填写每个职位的考核标准，保存后刷新即可生效
+  var roleInfo = {
+    "主唱": {
+      title: "🎤 主唱",
+      points: [
+        "1. 考核标准待补充（示例：音准、节奏、气息）",
+        "2. 考核标准待补充（示例：现场表现力）"
+      ]
+    },
+    "吉他": {
+      title: "🎸 吉他",
+      points: [
+        "1. 考核标准待补充",
+        "2. 考核标准待补充"
+      ]
+    },
+    "贝斯": {
+      title: "🎼 贝斯",
+      points: [
+        "1. 考核标准待补充",
+        "2. 考核标准待补充"
+      ]
+    },
+    "鼓手": {
+      title: "🥁 鼓手",
+      points: [
+        "1. 考核标准待补充",
+        "2. 考核标准待补充"
+      ]
+    },
+    "键盘": {
+      title: "🎹 键盘",
+      points: [
+        "1. 考核标准待补充",
+        "2. 考核标准待补充"
+      ]
+    },
+    "写词写曲": {
+      title: "✍️ 写词写曲",
+      points: [
+        "1. 考核标准待补充",
+        "2. 考核标准待补充"
+      ]
+    },
+    "摄影": {
+      title: "📷 摄影",
+      points: [
+        "1. 考核标准待补充",
+        "2. 考核标准待补充"
+      ]
+    },
+    "其他乐器": {
+      title: "🎷 其他乐器",
+      points: [
+        "1. 考核标准待补充",
+        "2. 考核标准待补充"
+      ]
+    }
+  };
+
+  var roleModal = document.getElementById("roleModal");
+  var roleTitle = document.getElementById("roleTitle");
+  var roleBody = document.getElementById("roleBody");
+
+  function showRole(key) {
+    var info = roleInfo[key];
+    if (!info || !roleModal) return;
+    roleTitle.textContent = info.title;
+    roleBody.innerHTML = "";
+    info.points.forEach(function (pt) {
+      var p = document.createElement("p");
+      p.className = "role-point";
+      p.textContent = pt;
+      roleBody.appendChild(p);
+    });
+    roleModal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function hideRole() {
+    if (roleModal) {
+      roleModal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+  }
+
+  var chips = document.querySelectorAll(".chip[data-role]");
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      showRole(c.getAttribute("data-role"));
+    });
+  });
+  if (roleModal) {
+    document.getElementById("roleClose").addEventListener("click", hideRole);
+    roleModal.addEventListener("click", function (e) {
+      if (e.target === roleModal) hideRole();
+    });
+  }
 })();
