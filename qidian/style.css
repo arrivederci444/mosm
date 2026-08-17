@@ -12,15 +12,15 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-snap-type: y proximity; background: #383028; }
+html { scroll-snap-type: y proximity; background: #3a3642; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   background:
-    radial-gradient(circle at 18% 22%, rgba(255,122,61,.13), transparent 42%),
-    radial-gradient(circle at 82% 72%, rgba(141,111,255,.11), transparent 42%),
-    radial-gradient(circle at 62% 94%, rgba(255,210,63,.08), transparent 45%),
-    linear-gradient(160deg, #3d332b 0%, #383028 45%, #2c241d 100%);
+    radial-gradient(circle at 18% 22%, rgba(255,122,61,.12), transparent 42%),
+    radial-gradient(circle at 82% 72%, rgba(96,150,255,.16), transparent 42%),
+    radial-gradient(circle at 62% 94%, rgba(255,210,63,.07), transparent 45%),
+    linear-gradient(160deg, #48424d 0%, #403a47 45%, #343040 100%);
   color: var(--ink);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
