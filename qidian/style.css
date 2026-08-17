@@ -461,6 +461,8 @@ body {
   box-shadow: 0 4px 0 rgba(43,35,32,.85);
   cursor: pointer;
   transition: transform .12s;
+  text-decoration: none;
+  color: var(--ink);
 }
 .chip:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(43,35,32,.85); }
 .chip:nth-child(1) { background: #ffe1d3; }
@@ -473,51 +475,93 @@ body {
 .chip:nth-child(8) { background: #ffe4c8; }
 
 .role-hint {
-  margin: -12px 0 0;
+  margin: -12px 0 22px;
   font-size: 12px;
   font-weight: 700;
   color: rgba(255,255,255,.55);
 }
 
-/* 职位信息展开面板 */
-.role-panel {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .5s ease;
-  width: 100%;
-  max-width: 420px;
+/* ---------- 职位详情页 ---------- */
+.role-page {
+  max-width: 520px;
   margin: 0 auto;
+  padding: 40px 24px calc(48px + env(safe-area-inset-bottom));
 }
-.role-panel.open { max-height: 520px; }
-.role-panel-inner {
-  background: var(--card);
-  border: 2.5px solid var(--ink);
-  border-radius: 18px;
-  box-shadow: 0 6px 0 rgba(43,35,32,.9);
-  padding: 16px;
+.role-page-head { text-align: center; margin-bottom: 22px; }
+.role-page-title {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-top: 6px;
+}
+.role-page-sub {
+  color: rgba(255,255,255,.6);
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.role-back {
+  display: inline-block;
   margin-top: 16px;
-  text-align: left;
-  transform: rotate(-0.5deg);
+  color: rgba(255,255,255,.85);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,.35);
+  border-radius: 999px;
+  padding: 7px 16px;
 }
-.role-panel-title {
+.role-back:active { background: rgba(255,255,255,.15); }
+
+.role-nav {
+  margin: 0 0 26px;
+  justify-content: center;
+}
+.role-nav .chip {
+  text-decoration: none;
+  color: var(--ink);
+}
+.role-nav .chip.on {
+  border-color: var(--orange);
+  box-shadow: 0 4px 0 var(--orange);
+  transform: translateY(-1px);
+}
+
+.role-detail-block {
+  display: none;
+  background: var(--card);
+  border: 3px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 0 7px 0 rgba(43,35,32,.9);
+  padding: 24px 22px;
+  text-align: left;
+  animation: fadeSlide .35s ease both;
+}
+.role-detail-block.show { display: block; }
+.role-detail-block h2 {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 14px;
+  color: var(--ink);
+}
+.role-detail-block h3 {
   font-size: 15px;
   font-weight: 900;
-  margin-bottom: 10px;
+  margin: 18px 0 10px;
   color: var(--ink);
 }
-.role-point {
-  font-size: 13px;
-  font-weight: 700;
+.role-detail-block p,
+.role-detail-block li {
+  font-size: 14px;
+  font-weight: 600;
   color: var(--ink);
-  margin: 8px 0;
-  padding-left: 16px;
-  position: relative;
+  line-height: 1.9;
 }
-.role-point::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  color: var(--orange);
+.role-detail-block ul { padding-left: 20px; }
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ---------- 加入我们 ---------- */
