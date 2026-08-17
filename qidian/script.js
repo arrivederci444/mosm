@@ -67,7 +67,7 @@
 
       if (!name || !major || !phone) return fail("姓名、专业、手机号都要填哦～");
       if (!position) return fail("选一下想玩的职位");
-      if (!instruments) return fail("写一下会什么（不会就写「不会」）");
+      if (!instruments) return fail("写一下会什么（不会就写「零基础」）");
       if (!group) return fail("选一下加群了吗？");
       if (!/^202\d{5}0\d{3}$/.test(studentId)) return fail("学号格式不对，应为 202XXXXX0XXX");
 
