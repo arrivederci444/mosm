@@ -12,7 +12,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-snap-type: y proximity; background: #3a3642; }
+html { scroll-snap-type: y proximity; background: #3a3642; scroll-padding-bottom: 48px; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -534,7 +534,7 @@ body {
 .role-app {
   max-width: 560px;
   margin: 0 auto;
-  padding: 32px 18px calc(40px + env(safe-area-inset-bottom));
+  padding: 32px 18px calc(80px + env(safe-area-inset-bottom));
 }
 .role-app-head { text-align: center; margin-bottom: 18px; }
 .role-app-title {
@@ -640,6 +640,7 @@ body {
 }
 
 /* ---------- 加入我们 ---------- */
+#slide3 { padding-bottom: calc(90px + env(safe-area-inset-bottom)); }
 .qr-row {
   display: flex;
   justify-content: center;
