@@ -222,10 +222,10 @@ body {
 
 /* ---------- 封面 ---------- */
 .slide-cover {
-  background-image: url("picture/DSC_8650_cover.jpg?v=4");
+  background-image: url("picture/DSC_8650_cover.jpg?v=5");
   background-image: image-set(
-    url("picture/DSC_8650_cover.webp?v=4") type("image/webp") 1x,
-    url("picture/DSC_8650_cover.jpg?v=4") type("image/jpeg") 1x
+    url("picture/DSC_8650_cover.webp?v=5") type("image/webp") 1x,
+    url("picture/DSC_8650_cover.jpg?v=5") type("image/jpeg") 1x
   );
   background-size: cover;
   background-position: center;
