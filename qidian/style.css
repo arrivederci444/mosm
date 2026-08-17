@@ -383,36 +383,28 @@ body {
   line-height: 1.8;
 }
 #slide1 .facts .emoji { font-size: 16px; }
-
-#slide1 .about-link {
-  position: absolute;
-  left: 50%;
-  bottom: 10%;
-  transform: translateX(-50%) rotate(1.5deg);
-  background: var(--card);
-  border: 2.5px solid var(--ink);
-  border-radius: 14px;
-  box-shadow: 0 5px 0 rgba(43,35,32,.9);
+#slide1 .facts li.facts-cta {
+  padding: 10px 12px;
+}
+#slide1 .facts li.facts-cta .about-link {
+  display: block;
+  width: 100%;
+  background: none;
+  border: 0;
+  box-shadow: none;
   color: var(--ink);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: 0;
-  padding: 10px 18px;
-  white-space: nowrap;
-  z-index: 5;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
 }
-#slide1 .about-link:active {
-  transform: translateX(-50%) rotate(1.5deg) translateY(3px);
-  box-shadow: 0 2px 0 rgba(43,35,32,.9);
-}
-#slide1 .tail {
-  position: absolute;
-  left: 50%;
-  bottom: 3%;
-  transform: translateX(-50%);
-  margin-top: 0;
-  font-size: 12px;
-  white-space: nowrap;
+#slide1 .facts li.facts-cta .tail {
+  margin-top: 4px;
+  font-size: 11px;
+  color: rgba(43,35,32,.55);
 }
 
 @media (min-width: 768px) {
