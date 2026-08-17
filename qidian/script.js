@@ -53,10 +53,23 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var name = form.querySelector('[name="name"]').value.trim();
+      var studentId = form.querySelector('[name="student_id"]').value.trim();
       var major = form.querySelector('[name="major"]').value.trim();
       var phone = form.querySelector('[name="phone"]').value.trim();
       var grp = form.querySelector('input[name="group"]:checked');
-      var group = grp ? grp.value : "无";
+      var group = grp ? grp.value : "";
+
+      function fail(msg) {
+        if (hint) {
+          hint.textContent = msg;
+          hint.style.color = "var(--pink)";
+        }
+        setTimeout(function () { if (hint) hint.textContent = ""; }, 6000);
+      }
+
+      if (!name || !major || !phone) return fail("姓名、专业、手机号都要填哦～");
+      if (!group) return fail("选一下加群了吗？");
+      if (!/^202\d{5}0\d{3}$/.test(studentId)) return fail("学号格式不对，应为 202XXXXX0XXX");
 
       if (hint) {
         hint.textContent = "提交中…";
@@ -71,7 +84,13 @@
           "Content-Type": "application/json",
           "Prefer": "return=minimal"
         },
-        body: JSON.stringify({ name: name, major: major, phone: phone, group: group })
+        body: JSON.stringify({
+          name: name,
+          student_id: studentId,
+          major: major,
+          phone: phone,
+          group: group
+        })
       })
       .then(function (res) {
         if (res.ok) {
@@ -86,7 +105,7 @@
       })
       .catch(function () {
         if (hint) {
-          hint.textContent = "提交失败，麻烦直接进群或私聊我们～";
+          hint.textContent = "提交失败（学号可能已报过名），麻烦直接进群或私聊我们～";
           hint.style.color = "var(--pink)";
         }
       })

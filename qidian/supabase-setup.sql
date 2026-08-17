@@ -4,11 +4,20 @@
 create table public.signups (
   id uuid primary key default gen_random_uuid(),
   name text not null,
+  student_id text not null,
   major text not null,
   phone text not null,
   "group" text not null default '无',
   created_at timestamptz default now()
 );
+
+-- 学号唯一，格式 202XXXXX0XXX
+alter table public.signups
+  add constraint signups_student_id_unique unique (student_id);
+
+alter table public.signups
+  add constraint signups_student_id_format
+  check (student_id ~ '^202\d{5}0\d{3}$');
 
 -- 开启行级安全
 alter table public.signups enable row level security;
