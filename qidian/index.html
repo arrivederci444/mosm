@@ -91,19 +91,14 @@
       <h2 class="slide-title">来，扫码进群</h2>
       <div class="qr-row">
         <div class="qr">
-          <a class="qr-save" href="qr-wechat.jpg" download="QQ群二维码.jpg">
-            <img src="qr-wechat.jpg" alt="QQ群二维码">
-          </a>
+          <img src="qr-wechat.jpg" alt="QQ群二维码">
           <span class="qr-label">QQ群</span>
         </div>
         <div class="qr">
-          <a class="qr-save" href="qr-qq.jpg" download="微信群二维码.jpg">
-            <img src="qr-qq.jpg" alt="微信群二维码">
-          </a>
+          <img src="qr-qq.jpg" alt="微信群二维码">
           <span class="qr-label">微信群（推荐）</span>
         </div>
       </div>
-      <p class="qr-hint">点一下二维码可以保存图片</p>
       <div class="card form-card">
         <h3>或者留个名，我们来找你</h3>
         <form id="joinForm">
@@ -146,6 +141,11 @@
   <button class="lb-prev" id="lbPrev">‹</button>
   <img id="lbImg" src="" alt="">
   <button class="lb-next" id="lbNext">›</button>
+</div>
+
+<!-- 二维码放大 -->
+<div class="qr-zoom" id="qrZoom">
+  <img id="qrZoomImg" src="" alt="二维码">
 </div>
 
 <script src="script.js"></script>

@@ -181,4 +181,19 @@
       if (e.key === "ArrowRight") document.getElementById("lbNext").click();
     });
   }
+
+  /* ---------- 二维码：轻点放大，再点返回，长按保存 ---------- */
+  var qrZoom = document.getElementById("qrZoom");
+  var qrZoomImg = document.getElementById("qrZoomImg");
+  if (qrZoom) {
+    document.querySelectorAll(".qr img").forEach(function (img) {
+      img.addEventListener("click", function () {
+        qrZoomImg.src = img.currentSrc || img.src;
+        qrZoom.classList.add("open");
+      });
+    });
+    qrZoom.addEventListener("click", function () {
+      qrZoom.classList.remove("open");
+    });
+  }
 })();

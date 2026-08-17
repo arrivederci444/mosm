@@ -613,12 +613,24 @@ body {
   border-radius: 10px;
   display: block;
 }
-.qr-save { display: block; }
-.qr-hint {
-  margin: -10px 0 22px;
-  font-size: 12px;
-  font-weight: 700;
-  color: rgba(255,255,255,.55);
+
+/* 二维码放大 */
+.qr-zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.95);
+  padding: 30px;
+  cursor: zoom-out;
+}
+.qr-zoom.open { display: flex; }
+.qr-zoom img {
+  max-width: 88vw;
+  max-height: 88vh;
+  border-radius: 12px;
 }
 .qr-label {
   display: block;
