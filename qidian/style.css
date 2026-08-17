@@ -229,7 +229,7 @@ body {
     url("picture/DSC_8650_cover.jpg?v=5") type("image/jpeg") 1x
   );
   background-size: cover;
-  background-position: center;
+  background-position: 38% center;
 }
 /* 封面：先露图，文字再慢慢浮出 */
 .cover-inner > * {
