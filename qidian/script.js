@@ -44,8 +44,8 @@
 
   /* ---------- 报名表单（提交到 Supabase） ---------- */
   // ⬇️ 在这里填入你的 Supabase 项目地址和 anon 公钥
-  var SUPABASE_URL = "https://你的项目.supabase.co";
-  var SUPABASE_KEY = "你的anon公钥";
+  var SUPABASE_URL = "https://gtatmoazcdmmcmaqqgsl.supabase.co";
+  var SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd0YXRtb2F6Y2RtbWNtYXFxZ3NsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY5NTYxMjYsImV4cCI6MjEwMjUzMjEyNn0.XXU91NSzZ1n_clJm87IyAQ2aix-KlZ3nf4xJXn9XE7I";
 
   var form = document.getElementById("joinForm");
   var hint = document.getElementById("formHint");
