@@ -327,12 +327,12 @@ body {
 
 .about-body {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "head p1"
-    "desc facts"
-    "p2   facts";
-  gap: 20px 18px;
+    "desc p2"
+    "facts facts";
+  gap: 20px 16px;
   align-items: start;
   width: 100%;
   max-width: 540px;
@@ -349,13 +349,14 @@ body {
   font-size: 12.5px;
   font-weight: 700;
   text-align: left;
-  transform: rotate(-1deg);
+  transform: rotate(-0.5deg);
+  margin-top: 8px;
 }
 .about-desc p { color: var(--ink); line-height: 1.9; }
 
 .about-photo { margin: 0; }
-.about-photo.p1 { grid-area: p1; transform: rotate(2deg); margin-top: 8px; }
-.about-photo.p2 { grid-area: p2; transform: rotate(-2deg); margin-top: -6px; }
+.about-photo.p1 { grid-area: p1; transform: rotate(2deg); margin-top: 6px; }
+.about-photo.p2 { grid-area: p2; transform: rotate(-2deg); margin-top: 10px; }
 .about-photo img {
   width: 100%;
   display: block;
@@ -372,13 +373,13 @@ body {
 
 #slide1 .facts {
   grid-area: facts;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
   list-style: none;
   text-align: left;
   margin-top: 0;
-  transform: rotate(1deg);
+  transform: rotate(0.5deg);
 }
 #slide1 .facts li {
   padding: 11px 12px;
