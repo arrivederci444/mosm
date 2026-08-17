@@ -12,7 +12,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-snap-type: y proximity; background: #3a3642; scroll-padding-bottom: 48px; }
+html { scroll-snap-type: y proximity; background: #3a3642; scroll-padding-bottom: 48px; overflow-x: hidden; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -24,6 +24,7 @@ body {
   color: var(--ink);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 .deck { scroll-snap-stop: always; }
@@ -771,27 +772,6 @@ body {
 }
 .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 rgba(43,35,32,.85); }
 .form-hint { margin-top: 12px; font-size: 13px; font-weight: 700; color: var(--green); text-align: center; }
-
-/* ---------- 进度点 ---------- */
-.dots {
-  position: fixed;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 50;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.dots span {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.4);
-  border: 1px solid rgba(0,0,0,.35);
-  transition: all .3s;
-}
-.dots span.on { background: var(--orange); transform: scale(1.5); }
 
 /* ---------- 桌面适配 ---------- */
 @media (min-width: 768px) {

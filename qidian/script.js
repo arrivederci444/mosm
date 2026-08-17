@@ -2,25 +2,11 @@
   "use strict";
 
   var slides = document.querySelectorAll(".slide");
-  var dotsBox = document.getElementById("dots");
-
-  /* ---------- 进度点 ---------- */
-  if (dotsBox) {
-    slides.forEach(function (_, i) {
-      var d = document.createElement("span");
-      if (i === 0) d.classList.add("on");
-      dotsBox.appendChild(d);
-    });
-  }
-  var dots = dotsBox ? dotsBox.querySelectorAll("span") : [];
 
   /* ---------- 滚动进入动画 + 当前屏 ---------- */
   function activate(i) {
     slides.forEach(function (s, k) {
       s.classList.toggle("in", k <= i);
-    });
-    dots.forEach(function (d, k) {
-      d.classList.toggle("on", k === i);
     });
   }
 
